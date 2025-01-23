@@ -161,6 +161,7 @@
         .letter-spacing-3 { letter-spacing: 2.35px; } 
 
         .uppercase { text-transform: uppercase; }
+        .capitalize { text-transform: capitalize; }
 
         .fs-900 { font-size: var(--fs-900); }
         .fs-800 { font-size: var(--fs-800); }
@@ -251,7 +252,13 @@
         
         .primary-navigation a:hover {
             color: hsl(var(--color-light));
-            transform-origin: center;
+            transform-origin: left;
+            transition: 500ms ease-in-out;
+        }
+
+        .primary-navigation a:hover span {
+            color: hsl(var(--color-white) / .5);
+            transform-origin: right;
             transition: 500ms ease-in-out;
         }
         
@@ -264,7 +271,7 @@
             content:'';
             display: block;
             height: .2rem;
-            background: hsl(var(--color-light) / .5);
+            background: hsl(var(--color-light) / 1);
             transform: scale(0, 1);
             transition: transform 500ms ease-in-out;
         }
