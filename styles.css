@@ -124,6 +124,52 @@
 /** Utility Classes            **/
 /** -------------------------- **/
 
+/* Colors */
+
+    .bg-dark { background-color: hsl(var(--color-dark));}
+        
+    .bg-accent { background-color: hsl(var(--color-light));}
+
+    .bg-white { background-color: hsl(var(--color-white));}
+
+    .text-dark { color: hsl(var(--color-dark));}
+
+    .text-accent { color: hsl(var(--color-light));}
+
+    .text-white { color: hsl(var(--color-white));}
+
+/* typography */
+
+    .ff-serif { font-family: var(--ff-serif); } 
+    .ff-sans-cond { font-family: var(--ff-sans-cond); } 
+    .ff-sans-normal { font-family: var(--ff-sans-normal); } 
+
+    .letter-spacing-1 { letter-spacing: 4.75px; } 
+    .letter-spacing-2 { letter-spacing: 2.7px; } 
+    .letter-spacing-3 { letter-spacing: 2.35px; } 
+
+    .uppercase { text-transform: uppercase; }
+    .capitalize { text-transform: capitalize; }
+
+    .fs-900 { font-size: var(--fs-900); }
+    .fs-800 { font-size: var(--fs-800); }
+    .fs-700 { font-size: var(--fs-700); }
+    .fs-600 { font-size: var(--fs-600); }
+    .fs-500 { font-size: var(--fs-500); }
+    .fs-400 { font-size: var(--fs-400); }
+    .fs-300 { font-size: var(--fs-300); }
+    .fs-200 { font-size: var(--fs-200); }
+
+
+    .fs-900,
+    .fs-800,
+    .fs-700,
+    .fs-600 {
+        line-height: 1.1;
+    }
+    
+/* Layout */
+
     .flex {
         display: flex;
         gap: var(--gap, 1rem);
@@ -144,44 +190,48 @@
         margin-inline: auto;
     }
 
-    .grid-container {
-        display: grid;
-        text-align: center;
+    .flex-container {
+        display: flex;
+        flex-direction: column;
         place-items: center;
-        
+        text-align: center;
         /* border: 1px solid limegreen; */
     }
-
-    .grid-container * {
+    
+    .flex-container * {
         max-width: 50ch;
     }
 
-    .centered-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    @media screen and (min-width: 48em) {
-        .grid-container {
+    
+    @media screen and (min-width: 45em) {
+        .flex-container {
+            flex-direction: row;
+            justify-content: space-between;
             text-align: left;
-            column-gap: var(--container-gap, 2rem);
-            grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(0, 50rem)) minmax(1rem, 1fr);
         }
-
+        
         .grid-container > *:first-child {
             grid-column: 2;
             border: 1px solid red;
         }
-    
+        
         .grid-container > *:last-child {
             grid-column: 3;
             border: 1px solid yellow;
         }
 
+        .flex-container--home {
+            padding: 5rem;
+        }
+        
     }
-
-
+    
+    @media screen and (max-width: 63rem){
+        .flex-container {
+            padding-inline: ;
+        }
+    }
+    
     .sr-only {
         position: absolute;
         width: 1px;
@@ -194,50 +244,6 @@
         border: 0;
     }
 
-    /* Colors */
-
-        .bg-dark { background-color: hsl(var(--color-dark));}
-        
-        .bg-accent { background-color: hsl(var(--color-light));}
-
-        .bg-white { background-color: hsl(var(--color-white));}
-
-        .text-dark { color: hsl(var(--color-dark));}
-
-        .text-accent { color: hsl(var(--color-light));}
-
-        .text-white { color: hsl(var(--color-white));}
-
-    /* typography */
-
-        .ff-serif { font-family: var(--ff-serif); } 
-        .ff-sans-cond { font-family: var(--ff-sans-cond); } 
-        .ff-sans-normal { font-family: var(--ff-sans-normal); } 
-
-        .letter-spacing-1 { letter-spacing: 4.75px; } 
-        .letter-spacing-2 { letter-spacing: 2.7px; } 
-        .letter-spacing-3 { letter-spacing: 2.35px; } 
-
-        .uppercase { text-transform: uppercase; }
-        .capitalize { text-transform: capitalize; }
-
-        .fs-900 { font-size: var(--fs-900); }
-        .fs-800 { font-size: var(--fs-800); }
-        .fs-700 { font-size: var(--fs-700); }
-        .fs-600 { font-size: var(--fs-600); }
-        .fs-500 { font-size: var(--fs-500); }
-        .fs-400 { font-size: var(--fs-400); }
-        .fs-300 { font-size: var(--fs-300); }
-        .fs-200 { font-size: var(--fs-200); }
-
-
-        .fs-900,
-        .fs-800,
-        .fs-700,
-        .fs-600 {
-            line-height: 1.1;
-        }
-        
 /** -------------------------- **/
 /** Components                 **/
 /** -------------------------- **/
@@ -260,11 +266,11 @@
             position: relative;
             z-index: 1;
             display: inline-grid;
-            padding: 0 1.5em;
+            padding: 0 2em;
             aspect-ratio: 1;
             border-radius: 50%;
             place-items: center;
-            font-size: 1.5rem;
+            font-size: 2rem;
             text-decoration: none;
         }
 
@@ -284,6 +290,33 @@
         .large-button:focus::after {
             opacity: 1;
             transform: scale(1.5);
+        }
+
+        @media screen and (max-width: 63em) {
+            .large-button {
+                border: 1px solid red;
+
+                padding: 0 2em;
+                font-size: 1.5rem;
+            }
+    
+            .large-button::after {
+                content: '';
+                position: absolute;
+                z-index: -1;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                background: hsl(var(--color-white) / .15);
+                opacity: 0;
+                transition: opacity 500ms linear, transform 500ms ease-in-out;
+            }
+            
+            .large-button:hover::after,
+            .large-button:focus::after {
+                opacity: 1;
+                transform: scale(1.5);
+            }
         }
 
         .logo {
