@@ -240,31 +240,6 @@
 /** Components                 **/
 /** -------------------------- **/
 
-        .numbered-title {
-            display: inline;
-            font-family: var(--ff-sans-cond);
-            font-size: var(--fs-400);
-            text-transform: uppercase;
-            letter-spacing: 4.72px;
-            color: hsl(var(--color-white));
-        }
-
-        .numbered-title span {
-            font-weight: 700;
-            color: hsl(var(--color-white) / .25);
-        }
-
-        @media screen and (max-width: 48rem) {
-            .numbered-title {
-                font-size: var(--fs-500);
-            }
-        }
-        @media screen and (min-width: 56rem) {
-            .numbered-title {
-                font-size: var(--fs-500);
-            }
-        }
-
         .large-button {
             position: relative;
             z-index: 1;
@@ -321,14 +296,16 @@
         }
 
         .logo {
-            width: 5rem;
+            width: clamp(5rem, 15vw, 12.5rem);
         }
         
+        /* primary-header */
+
         .primary-header {
             justify-content: space-between;
+            align-items: center;
         }
         
-    /* Navigation */
         nav {
             align-self: center;
         }
@@ -338,6 +315,8 @@
             padding: 0;
             margin: 0;
             background: hsl(var(--color-black)/ .95);
+            border: 1px solid red;
+            padding-inline: 2rem;
         }
         
         .mobile-nav-toggle {
@@ -351,7 +330,7 @@
             }
         }
 
-        @media screen and (max-width: 48rem) {
+        @media screen and (max-width: 50rem) {
             .primary-navigation {
                 list-style: none;
                 padding: min(20rem, 15vh) 2rem;
@@ -404,6 +383,31 @@
             color: hsl(var(--color-white) / .5);
             transform-origin: right;
             transition: 500ms ease-in-out;
+        }
+
+        .numbered-title {
+            display: inline;
+            font-family: var(--ff-sans-cond);
+            font-size: var(--fs-400);
+            text-transform: uppercase;
+            letter-spacing: 4.72px;
+            color: hsl(var(--color-white));
+        }
+
+        .numbered-title span {
+            font-weight: 700;
+            color: hsl(var(--color-white) / .25);
+        }
+
+        @media screen and (max-width: 48rem) {
+            .numbered-title {
+                font-size: var(--fs-500);
+            }
+        }
+        @media screen and (min-width: 56rem) {
+            .numbered-title {
+                font-size: var(--fs-500);
+            }
         }
         
         .underline-indicators > * {
